@@ -1,0 +1,16 @@
+# Lệnh nâng cấp HAPPY SOCIAL AI 5.0 trong Google Antigravity
+
+Bạn là kỹ sư full-stack Python, DevOps, AI và Meta Graph API. Mở workspace hiện tại và đọc README_VI.md, studio/app.py, studio/index.html, test_studio.py, TEST_RESULTS.txt. Đây là mã nguồn MVP đang hoạt động cục bộ. Không xóa hay thay thế tùy tiện. Sao lưu trước khi sửa; không gửi .env, token hoặc dữ liệu thật vào AI. Chạy test và ghi PROJECT_STATE.md, đánh dấu chức năng đã chạy thật, mock và BLOCKED.
+
+Thực hiện theo thứ tự ưu tiên:
+
+1. Hoàn thiện kết nối Meta OAuth với App Review/Business Verification theo yêu cầu thực tế. Lấy danh sách Page do chủ sở hữu cấp quyền, đối chiếu 5 URL hiện có; trang cá nhân không hỗ trợ thì chỉ cung cấp thao tác xuất thủ công. Lưu secret mã hóa phía server, không dùng cookie/mật khẩu. Xác nhận quyền và thử một Page sau khi người dùng cho phép.
+2. Nâng cấp lên FastAPI, PostgreSQL, Redis, Celery, durable scheduler và worker tách biệt; thêm migrations, idempotency, job lease, outbox, retry có giới hạn, xử lý reconciliation. Dữ liệu hiện tại phải migration an toàn. Chạy Docker Compose. Tách xưởng render Windows khỏi publisher Cloud; lưu media vào object storage. Máy chủ phải đăng bài đúng lịch khi PC tắt (nội dung đã chuẩn bị).
+3. Xây xưởng nghiên cứu nguồn tin đáng tin cậy, lưu nguồn, ngày, bản quyền và kiểm chứng. Tạo content brief, content pillars, lịch 30 ngày. Dùng adapter Gemini và model dự phòng khi được cấu hình; kiểm soát token và chi phí. Không tự đưa tin chưa kiểm chứng hoặc đăng nội dung nhạy cảm.
+4. Nâng cấp xưởng Reels có storyboard, ảnh gốc/AI có quyền, kho asset, logo, nhạc có giấy phép, giọng đọc, phụ đề theo thời gian thật, FFprobe kiểm tra codec và chất lượng. Xây image studio và API đăng ảnh. Thêm preview, sửa scene, export media. Kiểm tra nội dung trùng lặp giữa 5 kênh bằng embedding và perceptual hash.
+5. Nâng cấp lịch giao diện tháng/tuần, lịch riêng từng kênh, hàng đợi trạng thái, chế độ thủ công/bán tự động/tự động, lịch tạm dừng và nút dừng khẩn cấp. Thêm xác nhận mọi hành động xuất bản ngoài phạm vi đã cấp quyền. Không giả lập thành công.
+6. Đồng bộ Insights bằng quyền chính thức, bảo toàn giá trị null, phân tích reach/watch time/engagement nếu khả dụng; A/B test và phiên bản prompt, rollback. Không dựa trên một vài bài để kết luận. Telegram báo cáo tổng hợp và lỗi, không gửi secret. Chỉ đề xuất phản hồi bình luận mặc định.
+7. Bảo mật production: HTTPS, đăng nhập, phân quyền, CSRF, kiểm tra SSRF, encryption at rest, logs không có secret, backup và diễn tập restore, rate limit, giám sát chi phí, health checks, CI/CD, phiên bản ứng dụng. Không để AI tự sửa production. Chỉ triển khai sau phê duyệt, không phát sinh chi phí hoặc đăng bài công khai khi chưa được cho phép.
+8. Nghiệm thu từng chức năng qua unit, integration (mock) và live test được ủy quyền. Cập nhật README tiếng Việt UTF-8, file cấu hình mẫu, Docker Compose, hướng dẫn chạy Windows và Cloud, báo cáo test. Không dừng ở mockup. Không tạo nút vô chức năng. Không tuyên bố đã kết nối hoặc đăng thành công nếu thiếu bằng chứng.
+
+Mục tiêu vận hành: 5 Page được xác minh, mỗi kênh cấu hình 2 bài + 1 Reel/ngày (điều chỉnh được), kho dự phòng 7 ngày, duyệt tay mặc định, tự động trong phạm vi được người dùng cho phép. Không cam kết tăng trưởng hoặc 24/7 nếu chưa triển khai, giám sát Cloud thật.
